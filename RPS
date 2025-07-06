@@ -1,0 +1,45 @@
+import random
+
+def play_game():
+    choices = ['rock', 'paper', 'scissors']
+    user_score = 0
+    comp_score = 0
+
+    print("Welcome to Rock, Paper, Scissors!")
+    print("Type 'exit' anytime to quit.\n")
+
+    while True:
+        user_choice = input("Choose rock, paper, or scissors: ").lower()
+
+        if user_choice == 'exit':
+            print("Thanks for playing!")
+            print(f"Final Score → You: {user_score} | Computer: {comp_score}")
+            if user_score > comp_score:
+                print('You Won the Game!')
+            elif user_score < comp_score:
+                print('You lost the Game!')
+            else:
+                print('Its a Tie')   
+            break
+
+        if user_choice not in choices:
+            print("Invalid choice. Try again!\n")
+            continue
+
+        comp_choice = random.choice(choices)
+        print(f"Computer chose: {comp_choice}")
+
+        if user_choice == comp_choice:
+            print("It's a tie!\n")
+        elif (user_choice == 'rock' and comp_choice == 'scissors') or \
+             (user_choice == 'paper' and comp_choice == 'rock') or \
+             (user_choice == 'scissors' and comp_choice == 'paper'):
+            print("You win!\n")
+            user_score += 1
+        else:
+            print("Computer wins!\n")
+            comp_score += 1
+
+# Run the game
+if __name__ == "__main__":
+    play_game()
